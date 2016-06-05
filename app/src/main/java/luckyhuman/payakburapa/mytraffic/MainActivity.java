@@ -1,6 +1,8 @@
 package luckyhuman.payakburapa.mytraffic;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ public class MainActivity extends AppCompatActivity {// Start Main Class (เร
     //วิธีการ Explicit หรือ การประกาศตัวแปร
     private ListView trafficListView;//Access(private,public),type,name;ปุ่ม listview
     private Button aboutMeButton;//ปุ่ม Buttom(About me)
+    private String urlYoutubeString = "https://youtu.be/g9L7PXcIaKU";//เป็นการกำหนดตัวแปร URL เพื่อที่จะ Copy url like มาใส่
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {// Start Main Method
@@ -34,8 +37,14 @@ public class MainActivity extends AppCompatActivity {// Start Main Class (เร
             public void onClick(View v) {
 
                 //Sound Effect
-                MediaPlayer mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.bee);//getBaseContext()คือการmatแหล่งกำเนิดเสียงกับโปรแกรม
+                MediaPlayer mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.bird);//getBaseContext()คือการmatแหล่งกำเนิดเสียงกับโปรแกรม
                 mediaPlayer.start();
+
+                //Start Web View
+                Intent intent = new Intent(Intent.ACTION_VIEW);//สร้าง Constant
+                intent.setData(Uri.parse(urlYoutubeString));
+                startActivity(intent);
+                //End Web View
 
 
             } //onClick
